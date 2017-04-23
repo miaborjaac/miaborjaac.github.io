@@ -125,6 +125,10 @@ div[title *= "Click to return to Department of Computer Science – University o
     overflow: auto;
 }
 
+#content_conventions{
+    text-align: center;
+}
+
 #content_display{
     padding-top: 20vh;
     padding-left: 2vh;
