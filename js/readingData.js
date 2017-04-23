@@ -391,7 +391,7 @@ function schoolData(){
 	xhttp.open("GET", "https://data.cityofchicago.org/api/views/8i6r-et8s/rows.xml", true);
 	xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
-       		function7(this);
+    		function7(this);
     	}
 	};
 	xhttp.send();
@@ -519,6 +519,67 @@ function parksData(){
 		drawBestOption(bestOptionPark, 300);
 		$('#zone').text('Best area with access to a park');
 	}
+}
+
+function crimesData(){
+	$.ajax({
+   		url: "https://data.cityofchicago.org/resource/ijzp-q8t2.xml",
+   		type: "GET",
+   		data: {
+     		"$limit" : 300,
+     		"$where" : "date > '" + year + "-0" + month + "-01T00:00:00'"
+    	}
+	}).done(function(data) {
+		function9(data);
+	});
+
+
+	function function9(xml){	
+		var nearestCrime = {}	
+		var distance = 1000;    			
+		var auxXml = xml;
+		var countRow = auxXml.getElementsByTagName("id").length;
+		var lat, lng, latDistance, lngDistance, latAux, lngAux, position, nameCrime;
+				
+		for (var j = 0; j < countRow; j++) {
+			var a = {}
+			for (var k = 1; k <= 12; k++) {
+    			var x = auxXml.getElementsByTagName(crimes[k])[j];
+    			var y = "";			
+    			if(x != undefined){
+    				var z = x.tagName;
+    				y = x.childNodes[0];
+    				a[z] = y.textContent;
+    				if(k == 4){
+    					nameCrime = y.textContent;
+    				}
+    				if(k == 11){
+    					lat = y.textContent;
+    					latDistance = Math.pow(centerUniversity['lat'] - parseFloat(lat), 2);
+    					latAux = y;
+    				}
+    				if(k == 12){
+    					lng = y.textContent;
+    					lngDistance = Math.pow(centerUniversity['lng'] - parseFloat(lng), 2);
+    					lngAux = y;
+    					position = {lat: parseFloat(lat), lng: parseFloat(lng)};
+    					addMarker(position, nameCrime, "images/marker crime.png", j);
+    				}   					
+    			}
+   			}
+   			if(Math.sqrt(latDistance + lngDistance) < distance){
+				distance = Math.sqrt(latDistance + lngDistance);
+	   			nearestCrime['lat'] = parseFloat(latAux.textContent);
+				nearestCrime['lng'] = parseFloat(lngAux.textContent);
+   			}
+
+   			fields.push(a);   				
+		}
+
+		drawBestOption(nearestCrime, 400);
+		$('#zone').text('Nearest Crime');
+	}
+
 }
 
 

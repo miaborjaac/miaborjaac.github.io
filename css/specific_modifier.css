@@ -30,7 +30,7 @@ div[title *= "Click to return to Department of Computer Science – University o
     height: 8%;
 }
 
-.dropbtn{
+.dropbtn, .dropMonth{
     display: inline-block;
     background-color: #4ABF5A;
     color: black;
@@ -42,6 +42,11 @@ div[title *= "Click to return to Department of Computer Science – University o
     cursor: pointer;
     width: 45%;
     height: 40%;
+}
+
+.dropMonth{
+    left: 5%;
+    width: 40%;
 }
 
 .dropbtn:hover{
@@ -124,6 +129,7 @@ div[title *= "Click to return to Department of Computer Science – University o
     padding-top: 20vh;
     padding-left: 2vh;
     padding-right: 2vh;
+    overflow-x: hidden;
 }
 
 #pDisplay{
@@ -146,7 +152,7 @@ div[title *= "Click to return to Department of Computer Science – University o
     background-color: #4ABF5A;
     text-align: center;
     padding: 0.5vh;
-    margin: 0.1vh;
+    margin: 0.2vh;
     color: white;
     height: 8%;
 }

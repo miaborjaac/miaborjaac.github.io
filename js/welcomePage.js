@@ -9,6 +9,7 @@ $('#textWelcome').iid = setInterval(function() {
 
 $(document).ready(function(){
     $("#startBtn").click(function(){
+        $('.dropMonth').hide();
         $('.chart').hide(1000);
         $("#welcome").hide(1000);
         $("#all").show(1000, function(){

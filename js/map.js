@@ -94,6 +94,15 @@ function readingData(option){
 		case 'h':
 			parksData();
 			break;
+		case 'i':
+			$('.dropbtn').css("left", "5%");
+			var d = new Date();
+			var m = d.getMonth();
+			for(var i = 1; i <= m+1; i++){
+				$('#' + String(i)).show()
+			}
+			$('.dropMonth').show();
+			break;
 		default:
 			break;
 	}

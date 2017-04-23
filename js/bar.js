@@ -13,6 +13,7 @@ function barChart(){
   .data(data)
   .style("width", x)
   .text(String);
+
 }
 
 function initBarChart(){

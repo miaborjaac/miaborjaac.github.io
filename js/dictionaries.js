@@ -107,3 +107,18 @@ var schoolAttr = {
 
 var park = [10, 15, 14];
 var parkAttr = ["Name ", "Latitude ", "Longitude "];
+
+var crimes = {
+	1: "case_number",
+	2: "date",
+	3: "block",
+	4: "primary_type",
+	5: "description",
+	6: "arrest",
+	7: "domestic", 
+	8: "district",
+	9: "year",
+	10: "updated_on",
+	11: "latitude",
+	12: "longitude"
+};
